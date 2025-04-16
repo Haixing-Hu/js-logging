@@ -1,6 +1,6 @@
 {
   "name": "@qubit-ltd/logging",
-  "version": "1.4.7",
+  "version": "1.4.8",
   "description": "A simple JavaScript logging framework",
   "author": "Haixing Hu",
   "license": "Apache-2.0",
@@ -46,7 +46,7 @@
     "es5": "check-es-version -e 5 -s true",
     "deploy": "npm run lint && npm run test && npm run build:all && npm publish --registry='https://npm.qubit.ltd/' --access public",
     "deploy:public": "npm run lint && npm run test && npm run build:all && npm publish --registry='https://registry.npmjs.org/' --access public",
-    "deploy:all": "npm run deploy && npm run deploy:public"
+    "deploy:all": "npm run deploy && npm publish --registry='https://registry.npmjs.org/' --access public"
   },
   "browserify": {
     "transform": [
