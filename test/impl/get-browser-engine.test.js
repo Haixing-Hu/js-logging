@@ -13,7 +13,7 @@ describe('测试 getBrowserEngine', () => {
 
   beforeEach(() => {
     originalUserAgent = window.navigator.userAgent;
-    
+
     // 使用Object.defineProperty模拟不同的userAgent
     Object.defineProperty(window.navigator, 'userAgent', {
       configurable: true,
@@ -77,4 +77,4 @@ describe('测试 getBrowserEngine', () => {
     });
     expect(getBrowserEngine()).toBe('Unknown');
   });
-}); 
+});

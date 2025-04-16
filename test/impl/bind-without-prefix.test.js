@@ -15,14 +15,14 @@ describe('测试 bindWithoutPrefix', () => {
     const appender = new CustomizedAppender();
     const method = 'warn';
     const level = 'WARN';
-    
+
     bindWithoutPrefix(logger, method, level, appender);
-    
+
     expect(typeof logger.warn).toBe('function');
-    
+
     // 调用绑定的方法
     logger.warn('test message');
-    
+
     // 验证appender的warn方法被调用，没有添加前缀
     expect(appender.logs.length).toBe(1);
     expect(appender.logs[0].type).toBe('WARN');
@@ -34,12 +34,12 @@ describe('测试 bindWithoutPrefix', () => {
     const appender = new CustomizedAppender();
     const method = 'error';
     const level = 'ERROR';
-    
+
     bindWithoutPrefix(logger, method, level, appender);
-    
+
     // 调用绑定的方法，传递多个参数
     logger.error('test message', 123, { key: 'value' });
-    
+
     // 验证appender的error方法被调用，参数原样传递
     expect(appender.logs.length).toBe(1);
     expect(appender.logs[0].type).toBe('ERROR');
@@ -53,15 +53,15 @@ describe('测试 bindWithoutPrefix', () => {
     const appender = new CustomizedAppender();
     const method = 'trace';
     const level = 'TRACE';
-    
+
     bindWithoutPrefix(logger, method, level, appender);
-    
+
     // 调用绑定的方法，没有参数
     logger.trace();
-    
+
     // 验证appender的trace方法被调用，没有参数
     expect(appender.logs.length).toBe(1);
     expect(appender.logs[0].type).toBe('TRACE');
     expect(appender.logs[0].args.length).toBe(0);
   });
-}); 
+});

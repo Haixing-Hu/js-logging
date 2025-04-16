@@ -24,19 +24,19 @@ describe('测试 bindLoggingMethods', () => {
     const logger = {};
     const appender = new CustomizedAppender();
     const level = 'INFO';
-    
+
     // 模拟getBrowserEngine返回Blink
     getBrowserEngine.mockReturnValue('Blink');
-    
+
     bindLoggingMethods(logger, level, appender);
-    
+
     // 验证低于INFO级别的方法被绑定为NOOP
     expect(typeof logger.trace).toBe('function');
     expect(typeof logger.debug).toBe('function');
     logger.trace('test trace');
     logger.debug('test debug');
     expect(appender.logs.length).toBe(0); // 不会调用appender
-    
+
     // 验证大于等于INFO级别的方法被正确绑定
     expect(typeof logger.info).toBe('function');
     expect(typeof logger.warn).toBe('function');
@@ -51,12 +51,12 @@ describe('测试 bindLoggingMethods', () => {
     const logger = {};
     const appender = new CustomizedAppender();
     const level = 'ERROR';
-    
+
     // 模拟getBrowserEngine返回WebKit
     getBrowserEngine.mockReturnValue('WebKit');
-    
+
     bindLoggingMethods(logger, level, appender);
-    
+
     // 验证绑定了error方法
     expect(typeof logger.error).toBe('function');
     logger.error('test error');
@@ -70,12 +70,12 @@ describe('测试 bindLoggingMethods', () => {
     const logger = {};
     const appender = new CustomizedAppender();
     const level = 'ERROR';
-    
+
     // 模拟getBrowserEngine返回Gecko
     getBrowserEngine.mockReturnValue('Gecko');
-    
+
     bindLoggingMethods(logger, level, appender);
-    
+
     // 验证绑定了error方法
     expect(typeof logger.error).toBe('function');
     logger.error('test error');
@@ -88,12 +88,12 @@ describe('测试 bindLoggingMethods', () => {
     const logger = {};
     const appender = new CustomizedAppender();
     const level = 'ERROR';
-    
+
     // 模拟getBrowserEngine返回Trident
     getBrowserEngine.mockReturnValue('Trident');
-    
+
     bindLoggingMethods(logger, level, appender);
-    
+
     // 验证绑定了error方法
     expect(typeof logger.error).toBe('function');
     logger.error('test error');
@@ -106,12 +106,12 @@ describe('测试 bindLoggingMethods', () => {
     const logger = {};
     const appender = new CustomizedAppender();
     const level = 'ERROR';
-    
+
     // 模拟getBrowserEngine返回Presto
     getBrowserEngine.mockReturnValue('Presto');
-    
+
     bindLoggingMethods(logger, level, appender);
-    
+
     // 验证绑定了error方法
     expect(typeof logger.error).toBe('function');
     logger.error('test error');
@@ -124,12 +124,12 @@ describe('测试 bindLoggingMethods', () => {
     const logger = {};
     const appender = new CustomizedAppender();
     const level = 'ERROR';
-    
+
     // 模拟getBrowserEngine返回Unknown
     getBrowserEngine.mockReturnValue('Unknown');
-    
+
     bindLoggingMethods(logger, level, appender);
-    
+
     // 验证绑定了error方法
     expect(typeof logger.error).toBe('function');
     logger.error('test error');
@@ -142,17 +142,17 @@ describe('测试 bindLoggingMethods', () => {
     const logger = {};
     const appender = new CustomizedAppender();
     const level = 'ERROR';
-    
+
     // 手动添加一个NONE级别来测试
     const originalNone = LOGGING_LEVELS.NONE;
     LOGGING_LEVELS.NONE = Number.MAX_SAFE_INTEGER;
-    
+
     try {
       // 模拟getBrowserEngine返回Blink
       getBrowserEngine.mockReturnValue('Blink');
-      
+
       bindLoggingMethods(logger, level, appender);
-      
+
       // 验证没有绑定none方法
       expect(logger.none).toBeUndefined();
     } finally {
@@ -160,4 +160,4 @@ describe('测试 bindLoggingMethods', () => {
       LOGGING_LEVELS.NONE = originalNone;
     }
   });
-}); 
+});

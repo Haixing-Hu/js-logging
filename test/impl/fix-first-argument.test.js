@@ -26,8 +26,8 @@ describe('测试 fixFirstArgument', () => {
 
   it('应该正确处理第一个参数不是字符串的情况', () => {
     const prefix = '[PREFIX] ';
-    const args = [{key: 'value'}, 1, 2];
+    const args = [{ key: 'value' }, 1, 2];
     const result = fixFirstArgument(prefix, args);
-    expect(result).toEqual(['[PREFIX] ', {key: 'value'}, 1, 2]);
+    expect(result).toEqual(['[PREFIX] ', { key: 'value' }, 1, 2]);
   });
-}); 
+});
