@@ -23,16 +23,6 @@
     "monospaceLinks": false,
     "default": {
       "outputSourceFiles": false
-    },
-    "navLinks": [
-      {
-        "label": "中文文档",
-        "href": "../README.zh_CN.md"
-      },
-      {
-        "label": "GitHub",
-        "href": "https://github.com/Haixing-Hu/js-logging"
-      }
-    ]
+    }
   }
 }
