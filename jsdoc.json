@@ -13,7 +13,7 @@
     "excludePattern": "(^|\\/|\\\\)_"
   },
   "sourceType": "module",
-  "plugins": ["plugins/markdown"],
+  "plugins": ["plugins/markdown", "./jsdoc-readme-plugin.js"],
   "tags": {
     "allowUnknownTags": true,
     "dictionaries": ["jsdoc"]
